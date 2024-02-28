@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<br>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Move Cards to the Right</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card-container {
+      margin-left: 20px; /* Adjust this value to move the cards more or less to the right */
+    }
+  </style>
+  <style>
+    .schedule_header {
+        margin-left: 100px;
+    }
+</style>
+</head>
+<body>
+    <div class="schedule_header">
+        <h1> Schedule </h1>
+    </div>
+<br>
+
+  <div class="card-container">
+
+    
+
+    <div class="card mb-3" style="width: 22rem;">
+      <div class="card-body">
+        <h5 class="card-title">Henry Crawley</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Schedule</a>
+      </div>
+    </div>
+    
+    <div class="card text-left mb-3" style="width: 22rem;">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    
+    <div class="card text-left" style="width: 22rem;">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        background-color: #89CFF0; /* Set background color to blue */
+      }
+    </style>
+    </head>
+
+    <div class="col-md-6 offset-md-3">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="col-md-6 offset-md-5", style="color : white;">Login</h1>
+        <br>
+        <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <style>
+            .form-container {
+              border: 2px solid #89CFF0; /* Border color */
+              border-radius: 10px; /* Border radius for curved edges */
+              padding: 20px; /* Add padding for spacing */
+              max-width: 600px; /* Set maximum width for the form */
+              margin: auto; /* Center the form horizontally */
+              background-color: white; /* Set background color to blue */
+
+            }
+        /* Style the button to align right */
+        .form-container button {
+            margin-top: 5px; /* Add some space above the button */
+        }
+    </style>
+          <div class="form-container">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="text" name="username" class="form-control"  aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" >
+              </div>
+              <div class="mb-1">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </form>
+{% endif%}
+
+{% endblock  %}

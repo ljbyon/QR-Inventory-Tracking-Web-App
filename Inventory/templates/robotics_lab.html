@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-1">
+    <br>
+    <h1> Robotics Lab Inventory </h1>
+    
+
+   
+      <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+        <a type="button" class="btn btn-outline-secondary" href="{% url 'sparkfun' %}" >Sparkfun Kits</a>
+        <a type="button" class="btn btn-outline-secondary" href="{% url 'alienware' %}" >Alienware Laptops</a>
+        <a type="button" class="btn btn-outline-secondary" href="{% url 'teacherpack' %}" >Teacher iPads</a>
+        <a type="button" class="btn btn-outline-secondary" href="{% url 'spheros' %}" >Spheros</a>
+        </div>
+        <div class="input-group">
+          <div class="input-group-text" id="btnGroupAddon2">Search</div>
+          <input type="text" class="form-control" placeholder="let's find something" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+        </div>
+      </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block content1 %}
+
+{% endblock %}
