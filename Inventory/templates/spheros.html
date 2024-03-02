@@ -4,8 +4,64 @@
 {% block content1 %}
 
 <div class="col-md-6 offset-md-1">
-<br>
-<h1> Spheros</h1>
-</div>
+    <br>
+    
+    </div>
+    <br>
+    <style>
+    .table-wrapper {
+        border-radius: 10px;
+        overflow: visible;
+        margin: 0 20px; /* Adjust margins as needed */
+      }
+      
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      .table th,
+      .table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      
+      .table th {
+        background-color: #f0f8ff;
+      }
+    
+    </style>
+    
+    <div class="table-wrapper">
+        <h1> Spheros</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              
+              <th scope="col">Student Access Serial Number</th>
+              <th scope="col">Location</th>
+              <th scope="col">Last Checked</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             
+              <td>SB-E85E</td>
+              <td>Eckhardt Rm. #262 Beige Cabinet</td>
+              <td> 02/29/2024 </td>
+            </tr>
+            <tr>
+             
+              <td>SB-7C1C</td>
+              <td>Eckhardt Rm. #262 Beige Cabinet</td>
+              <td>02/29/2024</td>
+            </tr>
+            <tr>
+            
+            </tr>
+          </tbody>
+        </table>
+      </div>
 {% endblock %}
 

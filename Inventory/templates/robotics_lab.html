@@ -2,10 +2,20 @@
 
 {% block content %}
 
-<div class="col-md-6 offset-md-1">
+<style>
+.lab_nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* margin-left: 100px;  Adjust this value to move the header more or less to the right */
+  }
+
+</style>
+<div class="lab_nav">
+<div class="col-md-10">
     <br>
     <h1> Robotics Lab Inventory </h1>
-    
+   
 
    
       <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
@@ -15,12 +25,8 @@
         <a type="button" class="btn btn-outline-secondary" href="{% url 'teacherpack' %}" >Teacher iPads</a>
         <a type="button" class="btn btn-outline-secondary" href="{% url 'spheros' %}" >Spheros</a>
         </div>
-        <div class="input-group">
-          <div class="input-group-text" id="btnGroupAddon2">Search</div>
-          <input type="text" class="form-control" placeholder="let's find something" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-        </div>
       </div>
-
+    </div>
 </div>
 
 

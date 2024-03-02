@@ -4,8 +4,7 @@
 
 {% if user.is_authenticated %}
 <br>
-
-
+<br>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,58 +13,110 @@
   <title>Move Cards to the Right</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    .schedule_header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      /* margin-left: 150px;  Adjust this value to move the header more or less to the right */
+    }
+
     .card-container {
-      margin-left: 20px; /* Adjust this value to move the cards more or less to the right */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px; /* Adjust this value to increase or decrease the gap between cards */
+    }
+
+    @media (max-width: 768px) {
+      .schedule_header {
+         margin-left: 0; /* Reset margin for smaller screens */
+      }
+    }
+    .bullet-container {
+      display: flex;
+    }
+    
+    .bullet-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      
+      margin-right: 20px; /* Adjust the spacing between the lists */
+    }
+    
+    .bullet-list li {
+      
+      margin-bottom: 5px; /* Adjust the spacing between the list items */
     }
   </style>
-  <style>
-    .schedule_header {
-        margin-left: 100px;
-    }
-</style>
+  
 </head>
 <body>
-    <div class="schedule_header">
-        <h1> Schedule </h1>
-    </div>
-<br>
-
-  <div class="card-container">
-
-    
-
-    <div class="card mb-3" style="width: 22rem;">
-      <div class="card-body">
-        <h5 class="card-title">Henry Crawley</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Schedule</a>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="col-md-6 offset-md-3">
+        <div class="schedule_header">
+            <h1> Our Labs</h1>
+        </div>
       </div>
-    </div>
-    
-    <div class="card text-left mb-3" style="width: 22rem;">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    
-    <div class="card text-left" style="width: 22rem;">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <br>
+        <div class="card-container">
+          <div class="card text-left mb-3" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">Robotics Lab</h5>
+              <p class="card-text">
+                <div class="bullet-container">
+                <ul class="bullet-list">
+                  <li>iPads</li>
+                  <li>Spheros</li>
+                </ul>
+                <ul class="bullet-list">
+                  <li>SparkFun Kits</li>
+                  <li>Alienware Laptops</li>
+               
+              </div>
+            </p>
+              <a href="#" class="btn btn-primary">Go to Inventory</a>
+            </div>
+          </div>
+          <div class="card text-left mb-3" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">Virtual Reality Lab</h5>
+              <p class="card-text"><div class="bullet-container">
+                <ul class="bullet-list">
+                  <li>Oculus Rift S</li>
+                  <li>Oculus Quest</li>
+                </ul>
+                <ul class="bullet-list">
+                  <li>Monitors</li>
+                </ul>
+              </div></p>
+              <a href="#" class="btn btn-primary">Go to Inventory</a>
+            </div>
+          </div>
+          <div class="card text-left mb-3" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text"><div class="bullet-container">
+                <ul class="bullet-list">
+                  <li>Tello Drones</li>
+                  <li>Mavic Mini</li>
+                </ul>
+                <ul class="bullet-list">
+                  <li>Mavic Pro</li>
+                  <li>SparkFun Kits</li>
+                </ul>
+              </div></p>
+              <a href="#" class="btn btn-primary">Go to Inventory</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </body>
 </html>
-
-
-
-
-
 
 
 

@@ -5,14 +5,13 @@
 
 <div class="col-md-6 offset-md-1">
 <br>
-<h1> Alienware Laptops</h1>
 </div>
 <br>
 <style>
 .table-wrapper {
     border-radius: 10px;
-    overflow: hidden;
-    margin: 0 80px; /* Adjust margins as needed */
+    overflow: visible;
+    margin:0 20px; /* Adjust margins as needed */
   }
   
   .table {
@@ -30,10 +29,33 @@
   .table th {
     background-color: #f0f8ff;
   }
+  .button-wrapper {
+    position: fixed;
+    top: 50%; /* Adjust as needed */
+    right: 80px; /* Adjust as needed */
+    transform: translateY(-460%);
+  }
+  
+  /* Optional: If you want the button to be aligned vertically centered */
+  .button-wrapper button {
+    display: block;
+    margin: 0 auto;
+  }
 
 </style>
-
 <div class="table-wrapper">
+    <div class="container text-left">
+        <div class="row justify-content-md-left">
+          <div class="col col-lg-10">
+            <h1> Alienware Laptops</h1>
+          </div>
+          <div class="col col-lg-2">
+            <button type="button" class="btn btn-primary">Add New Item</button>
+          </div>
+        </div>
+
+ 
+
     <table class="table">
       <thead>
         <tr>
@@ -50,7 +72,11 @@
           <td>4RQ8L63</td>
           <td>88170</td>
           <td>Eckhardt Rm. #253, Main Cabinet</td>
-          <td> 02/29/2024 </td>
+{% if values %}
+            {% for item in values%}
+          <td>  {{ item.last_checked }}</td>
+            {% endfor %}
+{% endif %}
         </tr>
         <tr>
          
@@ -64,5 +90,6 @@
       </tbody>
     </table>
   </div>
+
 {% endblock %}
 
