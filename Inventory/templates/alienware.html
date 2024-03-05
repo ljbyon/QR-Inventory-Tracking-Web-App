@@ -50,16 +50,14 @@
             <h1> Alienware Laptops</h1>
           </div>
           <div class="col col-lg-2">
-            <button type="button" class="btn btn-primary">Add New Item</button>
+            <a type="button" class="btn btn-primary"href="{% url 'add_alienware' %}" >Add New Item</a>
           </div>
         </div>
 
- 
 
     <table class="table">
       <thead>
         <tr>
-          
           <th scope="col">Serial Number</th>
           <th scope="col">Student Access Serial Number</th>
           <th scope="col">Location</th>
@@ -67,26 +65,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-         
-          <td>4RQ8L63</td>
-          <td>88170</td>
-          <td>Eckhardt Rm. #253, Main Cabinet</td>
-{% if values %}
-            {% for item in values%}
-          <td>  {{ item.last_checked }}</td>
+            {% if aliens %}
+            {% for item in aliens %}
+        <tr> 
+          <td>{{ item.serial_number }}</td>
+          <td>{{ item.sa_serial_number }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.last_checked }}</td>
+        </tr>
             {% endfor %}
-{% endif %}
-        </tr>
-        <tr>
-         
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-        
-        </tr>
+            {% endif %}
       </tbody>
     </table>
   </div>

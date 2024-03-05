@@ -1,65 +1,85 @@
+
 {% extends "robotics_lab.html" %}
 
 {% block content1 %}
 
 <div class="col-md-6 offset-md-1">
-    <br>
-    
-    </div>
-    <br>
-    <style>
-    .table-wrapper {
-        border-radius: 10px;
-        overflow: visible;
-        margin: 0 20px; /* Adjust margins as needed */
-      }
-      
-      .table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      
-      .table th,
-      .table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
-      
-      .table th {
-        background-color: #f0f8ff;
-      }
-    
-    </style>
-    
-    <div class="table-wrapper">
-        <h1> Sparkfun Kits</h1>
-        <table class="table">
-          <thead>
-            <tr>
-              
-              <th scope="col">Student Access Serial Number</th>
-              <th scope="col">Location</th>
-              <th scope="col">Last Checked</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-             
-              <td>JHSL-K1</td>
-              <td>Eckhardt Rm. #262 Beige Cabinet</td>
-              <td> 02/29/2024 </td>
-            </tr>
-            <tr>
-             
-              <td>JHSL-K2</td>
-              <td>Eckhardt Rm. #262 Beige Cabinet</td>
-              <td>02/29/2024</td>
-            </tr>
-            <tr>
-            
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<br>
+</div>
+<br>
+<style>
+.table-wrapper {
+    border-radius: 10px;
+    overflow: visible;
+    margin:0 20px; /* Adjust margins as needed */
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f0f8ff;
+  }
+  .button-wrapper {
+    position: fixed;
+    top: 50%; /* Adjust as needed */
+    right: 80px; /* Adjust as needed */
+    transform: translateY(-460%);
+  }
+  
+  /* Optional: If you want the button to be aligned vertically centered */
+  .button-wrapper button {
+    display: block;
+    margin: 0 auto;
+  }
+
+</style>
+<div class="table-wrapper">
+    <div class="container text-left">
+        <div class="row justify-content-md-left">
+          <div class="col col-lg-10">
+            <h1> SparkFun Kits</h1>
+          </div>
+          <div class="col col-lg-2">
+            <a type="button" class="btn btn-primary"href="{% url 'add_sparkfun' %}" >Add New Item</a>
+          </div>
+        </div>
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Serial Number</th>
+          <th scope="col">Batch Number</th>
+          <th scope="col">Student Access Serial Number</th>
+          <th scope="col">Location</th>
+          <th scope="col">Last Checked</th>
+        </tr>
+      </thead>
+      <tbody>
+            {% if kits %}
+            {% for item in kits %}
+        <tr> 
+          <td>{{ item.serial_number }}</td>
+          <td>{{ item.batch_number }}</td>
+          <td>{{ item.sa_serial_number }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.last_checked }}</td>
+        </tr>
+            {% endfor %}
+            {% endif %}
+      </tbody>
+    </table>
+  </div>
+
 {% endblock %}
+

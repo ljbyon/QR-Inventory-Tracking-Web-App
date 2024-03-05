@@ -7,25 +7,56 @@ class SA_Serial_Numbers(models.Model):
     serial_number= models.CharField(max_length=100)
     last_checked = models.CharField(max_length=100, default=timezone.now)
 
-"""
+
 class Alienware(models.Model):
     # This will put a timestamp of whenever a record was added
     created_at = models.DateTimeField(auto_now_add=True)
+    serial_number= models.CharField(max_length=100)
+    sa_serial_number = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
 
-    serial_number= models.CharField(max_length=30)
-    asset_number = models.CharField(max_length=50)
-    location = models.CharField(max_length=30)
-    updated = models.CharField(max_length=30)
+
+# IGNORE THIS ONE BELOW
+class alienware_table(models.Model):
+    serial_number = models.CharField(max_length=100)
+    last_checked = models.CharField(max_length=100)
+    sa_serial_number = models.CharField(max_length=100, primary_key=True)
+    location = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False  # Set managed to False to tell Django not to manage this model's database table
+        db_table = 'alienware_table'  # Name of the view in the database
+
+
+class new_alienware_table(models.Model):
+    serial_number = models.CharField(max_length=100)
+    last_checked = models.CharField(max_length=100)
+    sa_serial_number = models.CharField(max_length=100, primary_key=True)
+    location = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False  # Set managed to False to tell Django not to manage this model's database table
+        db_table = 'new_alienware_table'  # Name of the view in the database
+
+
 class SparkFunKit(models.Model):
     # This will put a timestamp of whenever a record was added
     created_at = models.DateTimeField(auto_now_add=True)
 
-    serial_number= models.CharField(max_length=30)
-    batch_number = models.CharField(max_length=30)
-    asset_number = models.CharField(max_length=50)
-    location = models.CharField(max_length=30)
-    
-    def __str__(self):
-        return(f"{self.asset_number} {self.location}")
+    serial_number= models.CharField(max_length=100)
+    batch_number = models.CharField(max_length=100)
+    sa_serial_number = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
 
-"""
+class sparkfun_table(models.Model):
+    serial_number = models.CharField(max_length=100)
+    batch_number = models.CharField(max_length=100, primary_key=True)
+    last_checked = models.CharField(max_length=100)
+    sa_serial_number = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False  # Set managed to False to tell Django not to manage this model's database table
+        db_table = 'sparkfun_table'  # Name of the view in the database
+    
+
