@@ -4,6 +4,7 @@ from .models import SA_Serial_Numbers
 
 
 
+
 class AddAlienware(forms.Form):
 
     serial_number = forms.CharField(
