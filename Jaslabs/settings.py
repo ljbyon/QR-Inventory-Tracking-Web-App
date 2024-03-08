@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'Jaslabs.wsgi.application'
 # to connect postgres you have to run this command: pip install psycopg2-binary
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'JaSLabs',
-        'USER' : 'root',
-        'PASSWORD' : 'Henrycrawley15!',
+        'USER' : 'postgres',
+        'PASSWORD' : '090403',
         'HOST' : 'localhost',
-        'PORT' : '3306',
+        'PORT' : '5433',
     }
 }
 
