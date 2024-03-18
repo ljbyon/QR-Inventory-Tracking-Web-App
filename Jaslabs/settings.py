@@ -80,8 +80,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'JaSLabs',
         'USER' : 'postgres',
-        'PASSWORD' : '09042003',
-        'HOST' : 'jaslabs.c1g0iay0sboa.us-east-2.rds.amazonaws.com',
+        'PASSWORD' : '090403',
+        'HOST' : 'localhost',
         'PORT' : '5433',
     }
 }

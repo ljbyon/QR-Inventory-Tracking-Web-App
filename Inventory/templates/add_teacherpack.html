@@ -3,15 +3,15 @@
 {% block content %}
 <div class="col-md-6 offset-md-3">
 <br>
-<h1>Add Sparkfun Kit</h1>
+<h1>Add iPad</h1>
 <br>
-<form method="POST" action="{% url 'add_sparkfun' %}">
+<form method="POST" action="{% url 'add_alienware' %}">
     {% csrf_token %}
 
     {{ form.as_p }}
 <div class="d-flex justify-content-between">
     <button type="submit" class="btn btn-primary">Add Record</button>
-    <a type="button" class="btn btn-secondary" href="{% url 'sparkfun' %}" >Back</a>
+    <a type="button" class="btn btn-secondary" href="{% url 'teacherpack' %}" >Back</a>
 </div>
 </form>
 

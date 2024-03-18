@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import SA_Serial_Numbers, Alienware, new_alienware_table, sparkfun_table, SparkFunKit
+from .models import SA_Serial_Numbers, Alienware, new_alienware_table, sparkfun_table, SparkFunKit, teacherpack_table, teacherpack
 from django.shortcuts import get_object_or_404
 from datetime import datetime
-from .forms import AddAlienware, AddSparkfun
+from .forms import AddAlienware, AddSparkfun, AddTeacherpack
 
 # Create your views here.
 
@@ -56,19 +56,13 @@ def sparkfun(request):
     kits = sparkfun_table.objects.all()
     return render(request, 'sparkfun.html',{ 'kits' : kits})
 
-def add_sparkfun(request):
-    return render(request, 'add_sparkfun.html')
-
-
 def teacherpack(request):
-    return render(request, 'teacherpack.html')
+    ipads = teacherpack_table.objects.all()
+    return render(request, 'teacherpack.html', { 'ipads' : ipads})
 
 def alienware(request):
-    checked = SA_Serial_Numbers.objects.all()
-    values = Alienware.objects.all()
     aliens = new_alienware_table.objects.all()
-    print(values)
-    return render(request, 'alienware.html', {'values' : values, 'checked' : checked, "aliens" : aliens})
+    return render(request, 'alienware.html', {"aliens" : aliens})
 
 def spheros(request):
     return render(request, 'spheros.html')
@@ -123,3 +117,32 @@ def add_alienware(request):
                 return redirect('alienware')
         return render(request,'add_alienware.html', {'form' : form})
 
+
+def add_teacherpack(request):
+    form = AddTeacherpack(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == "POST":   
+            if form.is_valid():
+
+                tracking_data = {
+                'serial_number' : form.cleaned_data['serial_number'],
+                'last_checked' : form.cleaned_data['last_checked'],
+                }
+                teacherpack_data = {
+                    'location' : form.cleaned_data['location'],
+                    'sa_serial_number' : form.cleaned_data['sa_serial_number'],
+                    'serial_number' : form.cleaned_data['serial_number'],
+                    }
+
+                new_item_SA_Serial_Number = SA_Serial_Numbers.objects.create(**tracking_data)
+                new_item_teacherpack = teacherpack.objects.create(**teacherpack_data)
+                messages.success(request, "Item Created")
+
+                return redirect('teacherpack')
+        return render(request,'add_teacherpack.html', {'form' : form})
+
+
+
+
+def vr_lab(request):
+    return render(request, 'vr_lab.html')
