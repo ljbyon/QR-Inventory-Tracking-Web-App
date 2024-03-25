@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import SA_Serial_Numbers, Alienware, new_alienware_table, sparkfun_table, SparkFunKit, teacherpack_table, teacherpack
+from .models import SA_Serial_Numbers, Alienware, new_alienware_table, sparkfun_table, SparkFunKit, teacherpack_table, teacherpack, raspberry_pi_table, Raspberry_Pi
 from django.shortcuts import get_object_or_404
 from datetime import datetime
-from .forms import AddAlienware, AddSparkfun, AddTeacherpack
+from .forms import AddAlienware, AddSparkfun, AddTeacherpack, AddRaspberryPiForm
 
 # Create your views here.
 
@@ -66,6 +66,10 @@ def alienware(request):
 
 def spheros(request):
     return render(request, 'spheros.html')
+
+def raspberry_pi(request):
+    kits = raspberry_pi_table.objects.all()
+    return render(request, 'raspberry_pi.html', { 'kits' : kits})
 
 
 def add_sparkfun(request):
@@ -141,6 +145,28 @@ def add_teacherpack(request):
                 return redirect('teacherpack')
         return render(request,'add_teacherpack.html', {'form' : form})
 
+def add_raspberry_pi(request):
+    form = AddRaspberryPiForm(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == "POST":   
+            if form.is_valid():
+
+                tracking_data = {
+                'serial_number' : form.cleaned_data['sa_serial_number'],
+                'last_checked' : form.cleaned_data['last_checked'],
+                }
+                raspberry_pi_data = {
+                    'location' : form.cleaned_data['location'],
+                    'sa_serial_number' : form.cleaned_data['sa_serial_number'],
+
+                    }
+
+                new_item_SA_Serial_Number = SA_Serial_Numbers.objects.create(**tracking_data)
+                new_item_teacherpack = Raspberry_Pi.objects.create(**raspberry_pi_data)
+                messages.success(request, "Item Created")
+
+                return redirect('raspberry_pi')
+        return render(request,'add_raspberry_pi.html', {'form' : form})
 
 
 
